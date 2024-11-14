@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title inertia>CIS489 WEB DESIGN TEAM CODE</title>
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-<link rel="preload" as="style" href="https://cis489.knobleywater.com/build/assets/app-D8LMZ0WK.css" /><link rel="preload" as="style" href="https://cis489.knobleywater.com/build/assets/Dashboard-DGKkJCIy.css" /><link rel="preload" as="style" href="https://cis489.knobleywater.com/build/assets/Index-DUbvp15S.css" /><link rel="modulepreload" href="https://cis489.knobleywater.com/build/assets/app-BZ73SGI7.js" /><link rel="modulepreload" href="https://cis489.knobleywater.com/build/assets/Index-B5xq9ORk.js" /><link rel="modulepreload" href="https://cis489.knobleywater.com/build/assets/DefaultLayout-CwvcmWG0.js" /><link rel="modulepreload" href="https://cis489.knobleywater.com/build/assets/_plugin-vue_export-helper-DlAUqK2U.js" /><link rel="modulepreload" href="https://cis489.knobleywater.com/build/assets/DropdownLink-ByLQDE-m.js" /><link rel="stylesheet" href="https://cis489.knobleywater.com/build/assets/app-D8LMZ0WK.css" /><link rel="stylesheet" href="https://cis489.knobleywater.com/build/assets/Dashboard-DGKkJCIy.css" /><link rel="stylesheet" href="https://cis489.knobleywater.com/build/assets/Index-DUbvp15S.css" /><script type="module" src="https://cis489.knobleywater.com/build/assets/app-BZ73SGI7.js"></script><script type="module" src="https://cis489.knobleywater.com/build/assets/Index-B5xq9ORk.js"></script>            </head>
-    <body class="font-sans antialiased">
-<h1>
-        Name	Balance	Cell Phones	Service Address	E-Billing	Notify Email
-</h1>
-<style type="text/css">
- body {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KWMS Customers</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
         }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Sidebar styling */
+        .sidebar {
+            width: 200px;
+            background-color: #2f3d4a;
+            color: #fff;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
         }
-        h2 {
+        .sidebar h2 {
+            color: #00c3a0;
             text-align: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        .sidebar a:hover {
+            background-color: #1f2a35;
+        }
+        /* Main content styling */
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            width: calc(100% - 200px);
+        }
+        .content h1 {
+            border-bottom: 2px solid #00c3a0;
+            padding-bottom: 10px;
             color: #333;
         }
+        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
         }
         th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            padding: 15px;
         }
         th {
-            background-color: #e9ecef;
-            color: #333;
-        }
-        td {
-            color: #555;
-        }
-        .balance-positive {
-            color: green;
+            background-color: #f5f5f5;
         }
         .balance-negative {
             color: red;
         }
+        .balance-positive {
+            color: green;
+        }
+    </style>
+</head>
+<body>
 
-}</style>
-<h2>
-<div class="topnav">
-  <a class="active" href="#home">Customer
-  <a href="#contact">Contact:</a>
-  <input type="text" placeholder="Search..">
-</div>
-</h2>
-<table><tbody>
-<tr><td>Jaylynn Deleon</td></tr><tr><td>$ 0.00		9000 Waxler Road	Yes	jaylynn.deleon@email.com</td></tr>
-<tr><td>Ashton Mcintosh</td></tr><tr><td>$ 0.00		9005 Waxler Road	No	ashton.mcintosh@email.com</td></tr>
-<tr><td>Jacqueline Burton</td></tr><tr><td>$ -228.18		9010 Waxler Road	No	jacqueline.burton@email.com</td></tr>
-<tr><td>Benjamin Fowler</td></tr><tr><td>$ 0.00		9015 Waxler Road	Yes	benjamin.fowler@email.com</td></tr>
-<tr><td>Dante Cox</td></tr><tr><td>$ 0.00		9020 Waxler Road	Yes	dante.cox@email.com</td></tr>
-<tr><td>Frances Cordova</td></tr><tr><td>$ 0.00		9025 Waxler Road	Yes	frances.cordova@email.com</td></tr>
-<tr><td>Britney Barr</td></tr><tr><td>$ 0.00		9030 Waxler Road	Yes	britney.barr@email.com</td></tr>
-<tr><td>Marcos Baxter</td></tr><tr><td>$ 0.00		9035 Waxler Road	Yes	marcos.baxter@email.com</td></tr>
-<tr><td>Justus Strong</td></tr><tr><td>$ 0.00		9040 Waxler Road	Yes	justus.strong@email.com</td></tr>
-<tr><td>Kate Santos</td></tr><tr><td>$ 0.00		9045 Waxler Road	Yes	kate.santos@email.com</td></tr>
-<tr><td>Jakob Benson</td></tr><tr><td>$ 0.00		9050 Waxler Road	Yes	jakob.benson@email.com</td></tr>
-<tr><td>Adelyn Thompson</td></tr><tr><td>$ 0.00		9055 Waxler Road	Yes	adelyn.thompson@email.com</td></tr>
-<tr><td>Richard Yates</td></tr><tr><td>$ 0.00		9060 Waxler Road	Yes	richard.yates@email.com</td></tr>
-<tr><td>Sasha Lawson</td></tr><tr><td>$ 0.00		9065 Waxler Road	No	sasha.lawson@email.com</td></tr>
-<tr><td>Serenity Strong</td></tr><tr><td>$ 0.00	    9070 Waxler Road	Yes	serenity.strong@email.com</td></tr>
-<tr><td>Brodie Ford</td></tr><tr><td>$ 0.00	        9075 Waxler Road	Yes	brodie.ford@email.com</td></tr>
-<tr><td>Willie Villanueva</td></tr><tr><td>$ 0.00        9080 Waxler Road    No    willie.villanueva@email.com</td></tr>
-<tr><td>Noelle Baxter</td></tr><tr><td>$ 0.00        9085 Waxler Road    Yes    noelle.baxter@email.com</td></tr>
-<tr><td>Karson Bartlett</td></tr><tr><td>$ 0.00        9090 Waxler Road    Yes    karson.bartlett@email.com</td></tr>
-<tr><td>Jessie Swanson</td></tr><tr><td>$ 0.00        9095 Waxler Road    Yes    jessie.swanson@email.com</td></tr>
-<tr><td>Keegan Dickerson</td></tr><tr><td>$ 0.00        9100 Waxler Road    Yes    keegan.dickerson@email.com</td></tr>
-<tr><td>Jaylan Evans</td></tr><tr><td>$ 0.00        9105 Waxler Road    Yes    jaylan.evans@email.com</td></tr>
-<tr><td>Luciano Burch</td></tr><tr><td>$ 0.00        9110 Waxler Road    Yes    luciano.burch@email.com</td></tr>
-<tr><td>Cierra Merritt</td></tr><tr><td>$ 0.00        9115 Waxler Road    No    cierra.merritt@email.com</td></tr>
-<tr><td>Morgan Graham</td></tr><tr><td>$ 0.00        9120 Waxler Road    Yes    morgan.graham@email.com</td></tr>
-<tr><td>Felicity Booker</td></tr><tr><td>$ 0.00        9125 Waxler Road    Yes    felicity.booker@email.com</td></tr>
-<tr><td>Sarahi Long</td></tr><tr><td>$ 0.00        9130 Waxler Road    Yes    sarahi.long@email.com</td></tr>
-<tr><td>Ashlynn Hester</td></tr><tr><td>$ 0.00        9135 Waxler Road    Yes    ashlynn.hester@email.com</td></tr>
-<tr><td>Casey Sheppard</td></tr><tr><td>$ 0.00        9140 Waxler Road    Yes    casey.sheppard@email.com</td></tr>
-<tr><td>Coby Keller</td></tr><tr><td>$ -228.18        9145 Waxler Road    No    coby.keller@email.com</td></tr>
-<tr><td>Camren Mckenzie</td></tr><tr><td>$ 0.00        9150 Waxler Road    Yes    camren.mckenzie@email.com</td></tr>
-<tr><td>Rudy Maddox</td></tr><tr><td>$ 0.00        9155 Waxler Road    Yes    rudy.maddox@email.com</td></tr>
-<tr><td>Joy Blair</td></tr><tr><td>$ 0.00        9160 Waxler Road    Yes    joy.blair@email.com</td></tr>
-<tr><td>Tyrese Weber</td></tr><tr><td>$ 0.00        9165 Waxler Road    Yes    tyrese.weber@email.com</td></tr>
-<tr><td>Deandre Parrish</td></tr><tr><td>$ 0.00        9170 Waxler Road    Yes    deandre.parrish@email.com</td></tr>
-<tr><td>Jeremiah Strong</td></tr><tr><td>$ 0.00        9175 Waxler Road    Yes    jeremiah.strong@email.com</td></tr>
-<tr><td>Camila Lucas</td></tr><tr><td>$ 0.00        9180 Waxler Road    Yes    camila.lucas@email.com</td></tr>
-<tr><td>Quintin Bruce</td></tr><tr><td>$ 0.00        9185 Waxler Road    Yes    quintin.bruce@email.com</td></tr>
-<tr><td>Valeria Serrano</td></tr><tr><td>$ 0.00        9190 Waxler Road    Yes    valeria.serrano@email.com</td></tr>
-<tr><td>Gilbert Petersen</td></tr><tr><td>$ -228.18        9195 Waxler Road    No    gilbert.petersen@email.com</td></tr>
-<tr><td>Annabelle Turner</td></tr><tr><td>$ 0.00        9200 Waxler Road    Yes    annabelle.turner@email.com</td></tr>
-<tr><td>Hallie Lyons</td></tr><tr><td>$ 0.00        9205 Waxler Road    No    hallie.lyons@email.com</td></tr>
-<tr><td>Kenzie Warren</td></tr><tr><td>$ 0.00        9210 Waxler Road    Yes    kenzie.warren@email.com</td></tr>
-<tr><td>Damian Hardin</td></tr><tr><td>$ 0.00        9215 Waxler Road    Yes    damian.hardin@email.com</td></tr>
-<tr><td>Ivan Andrews</td></tr><tr><td>$ 0.00        9220 Waxler Road    Yes    ivan.andrews@email.com</td></tr>
-<tr><td>Katelyn Wilkins</td></tr><tr><td>$ 0.00        9225 Waxler Road    Yes    katelyn.wilkins@email.com</td></tr>
-<tr><td>Trinity Rhodes</td></tr><tr><td>$ 0.00        9230 Waxler Road    Yes    trinity.rhodes@email.com</td></tr>
-<tr><td>Seth Hebert</td></tr><tr><td>$ 0.00        9235 Waxler Road    Yes    seth.hebert@email.com</td></tr>
-<tr><td>Carlo Good</td></tr><tr><td>$ 0.00        9240 Waxler Road    Yes    carlo.good@email.com</td></tr>
-<tr><td>Abel Alexander</td></tr><tr><td>$ 0.00        9245 Waxler Road    Yes    abel.alexander@email.com</td></tr>
-<tr><td>Sage Jenkins</td></tr><tr><td>$ 0.00        9250 Waxler Road    Yes    sage.jenkins@email.com</td></tr>
-<tr><td>Karlie Curtis</td></tr><tr><td>$ -10.00        9255 Waxler Road    Yes    karlie.curtis@email.com</td></tr>
-<tr><td>Ayla Clayton</td></tr><tr><td>$ -228.18        9260 Waxler Road    No    ayla.clayton@email.com</td></tr>
-<tr><td>Trevon Osborne</td></tr><tr><td>$ 0.00        9265 Waxler Road    Yes    trevon.osborne@email.com</td></tr>
-<tr><td>Rosemary Carson</td></tr><tr><td>$ 0.00        9270 Waxler Road    No    rosemary.carson@email.com</td></tr>
-<tr><td>Alejandro Gordon</td></tr><tr><td>$ 0.00        9275 Waxler Road    Yes    alejandro.gordon@email.com</td></tr>
-<tr><td>Garrett Walton</td></tr><tr><td>$ 0.00        9280 Waxler Road    Yes    garrett.walton@email.com</td></tr>
-<tr><td>Hector Barton</td></tr><tr><td>$ 0.00        9285 Waxler Road    Yes    hector.barton@email.com</td></tr>
-<tr><td>Joy Hamilton</td></tr><tr><td>$ 0.00        9290 Waxler Road    No    joy.hamilton@email.com</td></tr>
-<tr><td>Donald Jarvis</td></tr><tr><td>$ -0.91        9295 Waxler Road    No    donald.jarvis@email.com</td></tr>
-</tbody></table>
+    <div class="sidebar">
+        <h2>KWMS</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Text / Email</a>
+        <a href="#" class="active">Customers</a>
+        <a href="#">Invoices</a>
+        <a href="#">Levels</a>
+        <a href="#">Trends</a>
+    </div>
+
+    <div class="content">
+        <h1>Customers</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Service Address</th>
+                <th>E-Billing</th>
+                <th>Notify Email</th>
+            </tr>
+            <tr>
+                <td>Jaylynn Deleon</td>
+                <td class="balance-positive">$0.00</td>
+                <td>9000 Waxler Road</td>
+                <td>Yes</td>
+                <td>jaylynn.deleon@email.com</td>
+            </tr>
+            <tr>
+                <td>Ashton McIntosh</td>
+                <td class="balance-positive">$0.00</td>
+                <td>9005 Waxler Road</td>
+                <td>No</td>
+                <td>ashton.mcintosh@email.com</td>
+            </tr>
+            <tr>
+                <td>Jacqueline Burton</td>
+                <td class="balance-negative">-228.18</td>
+                <td>9010 Waxler Road</td>
+                <td>No</td>
+                <td>jacqueline.burton@email.com</td>
+            </tr>
+            <tr>
+                <td>Benjamin Fowler</td>
+                <td class="balance-positive">$0.00</td>
+                <td>9015 Waxler Road</td>
+                <td>Yes</td>
+                <td>benjamin.fowler@email.com</td>
+            </tr>
+            <!-- Repeat similar rows for other customers -->
+        </table>
+    </div>
+
 </body>
 </html>
