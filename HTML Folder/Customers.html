@@ -19,10 +19,9 @@
             margin: 0;
             display: flex;
         }
-        /* Sidebar styling */
         .sidebar {
             width: 200px;
-            background-color: #2f3d4a;
+            background-color: #00003E;
             color: #fff;
             height: 100vh;
             padding-top: 20px;
@@ -40,7 +39,7 @@
             margin: 5px 0;
         }
         .sidebar a:hover {
-            background-color: #1f2a35;
+            background-color: #00003E;
         }
         /* Main content styling */
         .content {
@@ -49,7 +48,7 @@
             width: calc(100% - 200px);
         }
         .content h1 {
-            border-bottom: 2px solid #00c3a0;
+            border-bottom: 2px solid #00003E;
             padding-bottom: 10px;
             color: #333;
         }
@@ -75,11 +74,18 @@
         .balance-positive {
             color: green;
         }
+.topnav {
+  overflow: hidden;
+  text-align: right;
+}
     </style>
 </head>
 <body>
     <div class="content">
-        <h1>Customers <input type="text" placeholder="Search.."></h1>
+        <h1>Customers
+<div class="topnav">
+  <input type="text" placeholder="Search...">
+</div></h1>
         <table>
             <tr>
                 <th>Name</th>
@@ -165,4 +171,5 @@
         </table>
     </div>
 </html>
+
 
