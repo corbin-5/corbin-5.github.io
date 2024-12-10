@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KWMS Customers</title>
-<div class="sidebar">
-    <img src="images/KWMS.png" alt="KWMS">
-    <a href="#">Dashboard</a>
-    <a href="#">Text / Email</a>
-    <a href="#" class="active">Customers</a>
-    <a href="#">Invoices</a>
-    <a href="#">Levels</a>
-    <a href="#">Trends</a>
-</div>
+    <div class="sidebar">
+        <img src="images/KWMS.png" alt="KWMS">
+        <a href="#">Dashboard</a>
+        <a href="#">Text / Email</a>
+        <a href="#" class="active">Customers</a>
+        <a href="#">Invoices</a>
+        <a href="#">Levels</a>
+        <a href="#">Trends</a>
+    </div>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
         }
-        /* Sidebar styling */
         .sidebar {
             width: 200px;
             background-color: #2f3d4a;
@@ -27,10 +26,6 @@
             height: 100vh;
             padding-top: 20px;
             position: fixed;
-        }
-        .sidebar h2 {
-            color: #00c3a0;
-            text-align: center;
         }
         .sidebar a {
             display: block;
@@ -42,7 +37,6 @@
         .sidebar a:hover {
             background-color: #1f2a35;
         }
-        /* Main content styling */
         .content {
             margin-left: 200px;
             padding: 20px;
@@ -53,7 +47,6 @@
             padding-bottom: 10px;
             color: #333;
         }
-        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -75,12 +68,21 @@
         .balance-positive {
             color: green;
         }
+        #searchInput {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: calc(100% - 20px);
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="content">
         <h1>Customers</h1>
-        <table>
+        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for customers...">
+        <table id="customerTable">
             <tr>
                 <th>Name</th>
                 <th>Balance</th>
@@ -88,60 +90,14 @@
                 <th>E-Billing</th>
                 <th>Notify Email</th>
             </tr>
-            <tr>
-                <td>Jaylynn Deleon</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9000 Waxler Road</td>
-                <td>Yes</td>
-                <td>jaylynn.deleon@email.com</td>
-            </tr>
-            <tr>
-                <td>Ashton McIntosh</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9005 Waxler Road</td>
-                <td>No</td>
-                <td>ashton.mcintosh@email.com</td>
-            </tr>
-            <tr>
-                <td>Jacqueline Burton</td>
-                <td class="balance-negative">-228.18</td>
-                <td>9010 Waxler Road</td>
-                <td>No</td>
-                <td>jacqueline.burton@email.com</td>
-            </tr>
-            <tr>
-                <td>Benjamin Fowler</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9015 Waxler Road</td>
-                <td>Yes</td>
-                <td>benjamin.fowler@email.com</td>
-            </tr>
-	    <tr>
-                <td>Dante Cox</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9020 Waxler Road</td>
-                <td>Yes</td>
-                <td>dante.cox@email.com</td>
-            </tr>
-            <tr>
-                <td>Frances Cordova</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9025 Waxler Road</td>
-                <td>Yes</td>
-                <td>frances.cordova@email.com</td>
-            </tr>
-            <tr>
-                <td>Britney Barr</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9030 Waxler Road</td>
-                <td>Yes</td>
-                <td>britney.barr@email.com</td>
-            </tr>
-            <tr>
-                <td>Marcos Baxter</td>
-                <td class="balance-positive">$0.00</td>
-                <td>9035 Waxler Road</td>
-                <td>Yes</td><td>marcos.baxter@email.com</td></tr>
+            <tr><td>Jaylynn Deleon</td><td class="balance-positive">$0.00</td><td>9000 Waxler Road</td><td>Yes</td><td>jaylynn.deleon@email.com</td></tr>
+            <tr><td>Ashton McIntosh</td><td class="balance-positive">$0.00</td><td>9005 Waxler Road</td><td>No</td><td>ashton.mcintosh@email.com</td></tr>
+            <tr><td>Jacqueline Burton</td><td class="balance-negative">-228.18</td><td>9010 Waxler Road</td><td>No</td><td>jacqueline.burton@email.com</td></tr>
+            <tr><td>Benjamin Fowler</td><td class="balance-positive">$0.00</td><td>9015 Waxler Road</td><td>Yes</td><td>benjamin.fowler@email.com</td></tr>
+            <tr><td>Dante Cox</td><td class="balance-positive">$0.00</td><td>9020 Waxler Road</td><td>Yes</td><td>dante.cox@email.com</td></tr>
+            <tr><td>Frances Cordova</td><td class="balance-positive">$0.00</td><td>9025 Waxler Road</td><td>Yes</td><td>frances.cordova@email.com</td></tr>
+            <tr><td>Britney Barr</td><td class="balance-positive">$0.00</td><td>9030 Waxler Road</td><td>Yes</td><td>britney.barr@email.com</td></tr>
+            <tr><td>Marcos Baxter</td><td class="balance-positive">$0.00</td><td>9035 Waxler Road</td><td>Yes</td><td>marcos.baxter@email.com</td></tr>
             <tr><td>Justus Strong</td><td class="balance-positive">$0.00</td><td>9040 Waxler Road</td><td>Yes</td><td>justus.strong@email.com</td></tr>
             <tr><td>Kate Santos</td><td class="balance-positive">$0.00</td><td>9045 Waxler Road</td><td>Yes</td><td>kate.santos@email.com</td></tr>
             <tr><td>Jakob Benson</td><td class="balance-positive">$0.00</td><td>9050 Waxler Road</td><td>Yes</td><td>jakob.benson@email.com</td></tr>
@@ -160,9 +116,29 @@
             <tr><td>Cierra Merritt</td><td class="balance-positive">$0.00</td><td>9115 Waxler Road</td><td>No</td><td>cierra.merritt@email.com</td></tr>
             <tr><td>Morgan Graham</td><td class="balance-positive">$0.00</td><td>9120 Waxler Road</td><td>Yes</td><td>morgan.graham@email.com</td></tr>
             <tr><td>Felicity Booker</td><td class="balance-positive">$0.00</td><td>9125 Waxler Road</td><td>Yes</td><td>felicity.booker@email.com</td></tr>
-            <tr><td>Sarahi Long</td><td class="balance-positive">$0.00</td><td>9130 Waxler Road</td><td>Yes</td><td>sarahi.long@email.com</td></tr>
-            <!-- Repeat similar rows for other customers -->
         </table>
     </div>
-</html>
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("customerTable");
+            const rows = table.getElementsByTagName("tr");
 
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let isMatch = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].textContent.toLowerCase().includes(filter)) {
+                        isMatch = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = isMatch ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
