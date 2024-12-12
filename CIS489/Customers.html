@@ -4,64 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KWMS Customers</title>
-    <div class="sidebar">
-        <img src="images/KWMS.png" alt="KWMS">
-        <a href="#">Dashboard</a>
-        <a href="#">Text / Email</a>
-        <a href="#" class="active">Customers</a>
-        <a href="#">Invoices</a>
-        <a href="#">Levels</a>
-        <a href="#">Trends</a>
-    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             display: flex;
+            background-color: #f4f4f4;
         }
+
         .sidebar {
             width: 200px;
-            background-color: #2f3d4a;
+            background: linear-gradient(180deg, #3b4a61, #2f3d4a);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             color: #fff;
             height: 100vh;
             padding-top: 20px;
             position: fixed;
+            transition: all 0.3s ease;
         }
+
         .sidebar a {
-            display: block;
+            display: flex;
+            align-items: center;
             padding: 15px;
             color: #fff;
             text-decoration: none;
             margin: 5px 0;
+            transition: background 0.3s ease;
         }
+
         .sidebar a:hover {
-            background-color: #1f2a35;
+            background-color: #00c3a0;
         }
+
+        .sidebar a.active {
+            background-color: #00c3a0;
+        }
+
+        .sidebar i {
+            margin-right: 10px;
+        }
+
         .content {
             margin-left: 200px;
             padding: 20px;
             width: calc(100% - 200px);
+            animation: fadeIn 1s ease-out;
         }
+
         .content h1 {
+            font-size: 36px;
+            font-weight: 500;
+            color: #333;
             border-bottom: 2px solid #00c3a0;
             padding-bottom: 10px;
-            color: #333;
         }
-        /* Styling for the search input and icon */
+
         #searchWrapper {
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             width: 300px;
-            float: right;
+            float: left;
         }
+
         #searchInput {
             width: 100%;
-            padding: 10px;
+            padding: 10px 20px;
             font-size: 16px;
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             border-radius: 5px;
-            padding-left: 30px; /* Add space for the icon */
+            background-color: #f5f5f5;
+            padding-left: 30px;
+            transition: all 0.3s ease;
         }
+
+        #searchInput:focus {
+            border-color: #00c3a0;
+            background-color: #fff;
+        }
+
         .search-icon {
             position: absolute;
             left: 10px;
@@ -69,73 +92,160 @@
             transform: translateY(-50%);
             color: #888;
         }
+
+        .customer-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+        }
+
+        .balance.positive {
+            color: green;
+        }
+
+        .balance.negative {
+            color: red;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             clear: both;
         }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
         table, th, td {
             border: 1px solid #ddd;
             text-align: left;
         }
+
         th, td {
             padding: 15px;
         }
+
         th {
             background-color: #f5f5f5;
         }
+
         .balance-negative {
             color: red;
         }
+
         .balance-positive {
             color: green;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2f3d4a;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
-    <!-- Include Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="sidebar">
+        <img src="images/KWMS.png" alt="KWMS" style="width: 100%; padding: 10px 0;">
+        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#"><i class="fas fa-comment-alt"></i> Text / Email</a>
+        <a href="#" class="active"><i class="fas fa-users"></i> Customers</a>
+        <a href="#"><i class="fas fa-file-invoice"></i> Invoices</a>
+        <a href="#"><i class="fas fa-level-up-alt"></i> Levels</a>
+        <a href="#"><i class="fas fa-chart-line"></i> Trends</a>
+    </div>
+
     <div class="content">
         <h1>Customers</h1>
         <div id="searchWrapper">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for customers...">
         </div>
+
         <table id="customerTable">
-            <tr>
-                <th>Name</th>
-                <th>Balance</th>
-                <th>Service Address</th>
-                <th>E-Billing</th>
-                <th>Notify Email</th>
-            </tr>
-            <tr><td>Jaylynn Deleon</td><td class="balance-positive">$0.00</td><td>9000 Waxler Road</td><td>Yes</td><td>jaylynn.deleon@email.com</td></tr>
-            <tr><td>Ashton McIntosh</td><td class="balance-positive">$0.00</td><td>9005 Waxler Road</td><td>No</td><td>ashton.mcintosh@email.com</td></tr>
-            <tr><td>Jacqueline Burton</td><td class="balance-negative">-228.18</td><td>9010 Waxler Road</td><td>No</td><td>jacqueline.burton@email.com</td></tr>
-            <tr><td>Benjamin Fowler</td><td class="balance-positive">$0.00</td><td>9015 Waxler Road</td><td>Yes</td><td>benjamin.fowler@email.com</td></tr>
-            <tr><td>Dante Cox</td><td class="balance-positive">$0.00</td><td>9020 Waxler Road</td><td>Yes</td><td>dante.cox@email.com</td></tr>
-            <tr><td>Frances Cordova</td><td class="balance-positive">$0.00</td><td>9025 Waxler Road</td><td>Yes</td><td>frances.cordova@email.com</td></tr>
-            <tr><td>Britney Barr</td><td class="balance-positive">$0.00</td><td>9030 Waxler Road</td><td>Yes</td><td>britney.barr@email.com</td></tr>
-            <tr><td>Marcos Baxter</td><td class="balance-positive">$0.00</td><td>9035 Waxler Road</td><td>Yes</td><td>marcos.baxter@email.com</td></tr>
-            <tr><td>Justus Strong</td><td class="balance-positive">$0.00</td><td>9040 Waxler Road</td><td>Yes</td><td>justus.strong@email.com</td></tr>
-            <tr><td>Kate Santos</td><td class="balance-positive">$0.00</td><td>9045 Waxler Road</td><td>Yes</td><td>kate.santos@email.com</td></tr>
-            <tr><td>Jakob Benson</td><td class="balance-positive">$0.00</td><td>9050 Waxler Road</td><td>Yes</td><td>jakob.benson@email.com</td></tr>
-            <tr><td>Adelyn Thompson</td><td class="balance-positive">$0.00</td><td>9055 Waxler Road</td><td>Yes</td><td>adelyn.thompson@email.com</td></tr>
-            <tr><td>Richard Yates</td><td class="balance-positive">$0.00</td><td>9060 Waxler Road</td><td>Yes</td><td>richard.yates@email.com</td></tr>
-            <tr><td>Sasha Lawson</td><td class="balance-positive">$0.00</td><td>9065 Waxler Road</td><td>No</td><td>sasha.lawson@email.com</td></tr>
-            <tr><td>Serenity Strong</td><td class="balance-positive">$0.00</td><td>9070 Waxler Road</td><td>Yes</td><td>serenity.strong@email.com</td></tr>
-            <tr><td>Brodie Ford</td><td class="balance-positive">$0.00</td><td>9075 Waxler Road</td><td>Yes</td><td>brodie.ford@email.com</td></tr>
-            <tr><td>Willie Villanueva</td><td class="balance-positive">$0.00</td><td>9080 Waxler Road</td><td>No</td><td>willie.villanueva@email.com</td></tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Balance</th>
+                    <th>Service Address</th>
+                    <th>E-Billing</th>
+                    <th>Notify Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr><td>Willie Villanueva</td><td class="balance-positive">$0.00</td><td>9080 Waxler Road</td><td>No</td><td>willie.villanueva@email.com</td></tr>
             <tr><td>Noelle Baxter</td><td class="balance-positive">$0.00</td><td>9085 Waxler Road</td><td>Yes</td><td>noelle.baxter@email.com</td></tr>
             <tr><td>Karson Bartlett</td><td class="balance-positive">$0.00</td><td>9090 Waxler Road</td><td>Yes</td><td>karson.bartlett@email.com</td></tr>
             <tr><td>Jessie Swanson</td><td class="balance-positive">$0.00</td><td>9095 Waxler Road</td><td>Yes</td><td>jessie.swanson@email.com</td></tr>
             <tr><td>Keegan Dickerson</td><td class="balance-positive">$0.00</td><td>9100 Waxler Road</td><td>Yes</td><td>keegan.dickerson@email.com</td></tr>
             <tr><td>Jaylan Evans</td><td class="balance-positive">$0.00</td><td>9105 Waxler Road</td><td>Yes</td><td>jaylan.evans@email.com</td></tr>
             <tr><td>Luciano Burch</td><td class="balance-positive">$0.00</td><td>9110 Waxler Road</td><td>Yes</td><td>luciano.burch@email.com</td></tr>
-            <tr><td>Cierra Merritt</td><td class="balance-positive">$0.00</td><td>9115 Waxler Road</td><td>Yes</td><td>cierra.merritt@email.com</td></tr>
+            <tr><td>Cierra Merritt</td><td class="balance-positive">$0.00</td><td>9115 Waxler Road</td><td>No</td><td>cierra.merritt@email.com</td></tr>
+            <tr><td>Morgan Graham</td><td class="balance-positive">$0.00</td><td>9120 Waxler Road</td><td>Yes</td><td>morgan.graham@email.com</td></tr>
+            <tr><td>Felicity Booker</td><td class="balance-positive">$0.00</td><td>9125 Waxler Road</td><td>Yes</td><td>felicity.booker@email.com</td></tr>
+            <tr><td>Sarahi Long</td><td class="balance-positive">$0.00</td><td>9130 Waxler Road</td><td>Yes</td><td>sarahi.long@email.com</td></tr>
+            <tr><td>Ashlynn Hester</td><td class="balance-positive">$0.00</td><td>9135 Waxler Road</td><td>Yes</td><td>ashlynn.hester@email.com</td></tr>
+            <tr><td>Casey Sheppard</td><td class="balance-positive">$0.00</td><td>9140 Waxler Road</td><td>Yes</td><td>casey.sheppard@email.com</td></tr>
+            <tr><td>Coby Keller</td><td class="balance-negative">-228.18</td><td>9145 Waxler Road</td><td>No</td><td>coby.keller@email.com</td></tr>
+            <tr><td>Camren Mckenzie</td><td class="balance-positive">$0.00</td><td>9150 Waxler Road</td><td>Yes</td><td>camren.mckenzie@email.com</td></tr>
+            <tr><td>Rudy Maddox</td><td class="balance-positive">$0.00</td><td>9155 Waxler Road</td><td>Yes</td><td>rudy.maddox@email.com</td></tr>
+            <tr><td>Joy Blair</td><td class="balance-positive">$0.00</td><td>9160 Waxler Road</td><td>Yes</td><td>joy.blair@email.com</td></tr>
+            <tr><td>Tyrese Weber</td><td class="balance-positive">$0.00</td><td>9165 Waxler Road</td><td>Yes</td><td>tyrese.weber@email.com</td></tr>
+            <tr><td>Deandre Parrish</td><td class="balance-positive">$0.00</td><td>9170 Waxler Road</td><td>Yes</td><td>deandre.parrish@email.com</td></tr>
+            <tr><td>Jeremiah Strong</td><td class="balance-positive">$0.00</td><td>9175 Waxler Road</td><td>Yes</td><td>jeremiah.strong@email.com</td></tr>
+            <tr><td>Camila Lucas</td><td class="balance-positive">$0.00</td><td>9180 Waxler Road</td><td>Yes</td><td>camila.lucas@email.com</td></tr>
+            <tr><td>Quintin Bruce</td><td class="balance-positive">$0.00</td><td>9185 Waxler Road</td><td>Yes</td><td>quintin.bruce@email.com</td></tr>
+            <tr><td>Valeria Serrano</td><td class="balance-positive">$0.00</td><td>9190 Waxler Road</td><td>Yes</td><td>valeria.serrano@email.com</td></tr>
+            <tr><td>Gilbert Petersen</td><td class="balance-negative">-228.18</td><td>9195 Waxler Road</td><td>No</td><td>gilbert.petersen@email.com</td></tr>
+            <tr><td>Annabelle Turner</td><td class="balance-positive">$0.00</td><td>9200 Waxler Road</td><td>Yes</td><td>annabelle.turner@email.com</td></tr>
+            <tr><td>Hallie Lyons</td><td class="balance-positive">$0.00</td><td>9205 Waxler Road</td><td>No</td><td>hallie.lyons@email.com</td></tr>
+            <tr><td>Kenzie Warren</td><td class="balance-positive">$0.00</td><td>9210 Waxler Road</td><td>Yes</td><td>kenzie.warren@email.com</td></tr>
+            <tr><td>Damian Hardin</td><td class="balance-positive">$0.00</td><td>9215 Waxler Road</td><td>Yes</td><td>damian.hardin@email.com</td></tr>
+            <tr><td>Ivan Andrews</td><td class="balance-positive">$0.00</td><td>9220 Waxler Road</td><td>Yes</td><td>ivan.andrews@email.com</td></tr>
+            <tr><td>Katelyn Wilkins</td><td class="balance-positive">$0.00</td><td>9225 Waxler Road</td><td>Yes</td><td>katelyn.wilkins@email.com</td></tr>
+            <tr><td>Trinity Rhodes</td><td class="balance-positive">$0.00</td><td>9230 Waxler Road</td><td>Yes</td><td>trinity.rhodes@email.com</td></tr>
+            <tr><td>Seth Hebert</td><td class="balance-positive">$0.00</td><td>9235 Waxler Road</td><td>Yes</td><td>seth.hebert@email.com</td></tr>
+            <tr><td>Carlo Good</td><td class="balance-positive">$0.00</td><td>9240 Waxler Road</td><td>Yes</td><td>carlo.good@email.com</td></tr>
+            <tr><td>Abel Alexander</td><td class="balance-positive">$0.00</td><td>9245 Waxler Road</td><td>Yes</td><td>abel.alexander@email.com</td></tr>
+            <tr><td>Sage Jenkins</td><td class="balance-positive">$0.00</td><td>9250 Waxler Road</td><td>Yes</td><td>sage.jenkins@email.com</td></tr>
+            <tr><td>Karlie Curtis</td><td class="balance-negative">-10.00</td><td>9255 Waxler Road</td><td>Yes</td><td>karlie.curtis@email.com</td></tr>
+            <tr><td>Ayla Clayton</td><td class="balance-negative">-228.18</td><td>9260 Waxler Road</td><td>No</td><td>ayla.clayton@email.com</td></tr>
+            <tr><td>Trevon Osborne</td><td class="balance-positive">$0.00</td><td>9265 Waxler Road</td><td>Yes</td><td>trevon.osborne@email.com</td></tr>
+            <tr><td>Rosemary Carson</td><td class="balance-positive">$0.00</td><td>9270 Waxler Road</td><td>No</td><td>rosemary.carson@email.com</td></tr>
+            <tr><td>Alejandro Gordon</td><td class="balance-positive">$0.00</td><td>9275 Waxler Road</td><td>Yes</td><td>alejandro.gordon@email.com</td></tr>
+            <tr><td>Garrett Walton</td><td class="balance-positive">$0.00</td><td>9280 Waxler Road</td><td>Yes</td><td>garrett.walton@email.com</td></tr>
+            <tr><td>Hector Barton</td><td class="balance-positive">$0.00</td><td>9285 Waxler Road</td><td>Yes</td><td>hector.barton@email.com</td></tr>
+            <tr><td>Joy Hamilton</td><td class="balance-positive">$0.00</td><td>9290 Waxler Road</td><td>No</td><td>joy.hamilton@email.com</td></tr>
+            <tr><td>Donald Jarvis</td><td class="balance-negative">-0.91</td><td>9295 Waxler Road</td><td>No</td><td>donald.jarvis@email.com</td></tr>
+
+            </tbody>
         </table>
     </div>
+
+    <footer id="footer">
+        <p>&copy; 2024 KWMS. All rights reserved.</p>
+    </footer>
+
     <script>
         function filterTable() {
             const input = document.getElementById("searchInput");
@@ -155,6 +265,18 @@
                 }
 
                 rows[i].style.display = isMatch ? "" : "none";
+            }
+        }
+
+        window.onscroll = function() {
+            const footer = document.getElementById("footer");
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            if (scrollPosition >= documentHeight) {
+                footer.style.display = "block";
+            } else {
+                footer.style.display = "none";
             }
         }
     </script>
