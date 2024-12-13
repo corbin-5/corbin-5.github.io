@@ -13,7 +13,6 @@
             display: flex;
             background-color: #f4f4f4;
         }
-
         .sidebar {
             width: 200px;
             background: linear-gradient(180deg, #3b4a61, #2f3d4a);
@@ -24,7 +23,6 @@
             position: fixed;
             transition: all 0.3s ease;
         }
-
         .sidebar a {
             display: flex;
             align-items: center;
@@ -34,26 +32,21 @@
             margin: 5px 0;
             transition: background 0.3s ease;
         }
-
         .sidebar a:hover {
             background-color: #00c3a0;
         }
-
         .sidebar a.active {
             background-color: #00c3a0;
         }
-
         .sidebar i {
             margin-right: 10px;
         }
-
         .content {
             margin-left: 200px;
             padding: 20px;
             width: calc(100% - 200px);
             animation: fadeIn 1s ease-out;
         }
-
         .content h1 {
             font-size: 36px;
             font-weight: 500;
@@ -61,14 +54,12 @@
             border-bottom: 2px solid #00c3a0;
             padding-bottom: 10px;
         }
-
         #searchWrapper {
             position: relative;
             margin-bottom: 20px;
             width: 300px;
             float: left;
         }
-
         #searchInput {
             width: 100%;
             padding: 10px 20px;
@@ -79,12 +70,10 @@
             padding-left: 30px;
             transition: all 0.3s ease;
         }
-
         #searchInput:focus {
             border-color: #00c3a0;
             background-color: #fff;
         }
-
         .search-icon {
             position: absolute;
             left: 10px;
@@ -92,7 +81,6 @@
             transform: translateY(-50%);
             color: #888;
         }
-
         .customer-card {
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -101,51 +89,40 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin: 10px 0;
         }
-
         .balance.positive {
             color: green;
         }
-
         .balance.negative {
             color: red;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             clear: both;
         }
-
         table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-
         table tr:hover {
             background-color: #f1f1f1;
         }
-
         table, th, td {
             border: 1px solid #ddd;
             text-align: left;
         }
-
         th, td {
             padding: 15px;
         }
-
         th {
             background-color: #f5f5f5;
         }
-
         .balance-negative {
             color: red;
         }
-
         .balance-positive {
             color: green;
         }
-
         footer {
             position: fixed;
             bottom: 0;
@@ -157,7 +134,6 @@
             padding: 10px;
             display: none;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -174,14 +150,12 @@
         <a href="#"><i class="fas fa-level-up-alt"></i> Levels</a>
         <a href="#"><i class="fas fa-chart-line"></i> Trends</a>
     </div>
-
     <div class="content">
         <h1>Customers</h1>
         <div id="searchWrapper">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for customers...">
         </div>
-
         <table id="customerTable">
             <thead>
                 <tr>
@@ -193,7 +167,7 @@
                 </tr>
             </thead>
             <tbody>
-                 <tr><td>Willie Villanueva</td><td class="balance-positive">$0.00</td><td>9080 Waxler Road</td><td>No</td><td>willie.villanueva@email.com</td></tr>
+            <tr><td>Willie Villanueva</td><td class="balance-positive">$0.00</td><td>9080 Waxler Road</td><td>No</td><td>willie.villanueva@email.com</td></tr>
             <tr><td>Noelle Baxter</td><td class="balance-positive">$0.00</td><td>9085 Waxler Road</td><td>Yes</td><td>noelle.baxter@email.com</td></tr>
             <tr><td>Karson Bartlett</td><td class="balance-positive">$0.00</td><td>9090 Waxler Road</td><td>Yes</td><td>karson.bartlett@email.com</td></tr>
             <tr><td>Jessie Swanson</td><td class="balance-positive">$0.00</td><td>9095 Waxler Road</td><td>Yes</td><td>jessie.swanson@email.com</td></tr>
@@ -237,42 +211,34 @@
             <tr><td>Hector Barton</td><td class="balance-positive">$0.00</td><td>9285 Waxler Road</td><td>Yes</td><td>hector.barton@email.com</td></tr>
             <tr><td>Joy Hamilton</td><td class="balance-positive">$0.00</td><td>9290 Waxler Road</td><td>No</td><td>joy.hamilton@email.com</td></tr>
             <tr><td>Donald Jarvis</td><td class="balance-negative">-0.91</td><td>9295 Waxler Road</td><td>No</td><td>donald.jarvis@email.com</td></tr>
-
             </tbody>
         </table>
     </div>
-
     <footer id="footer">
         <p>&copy; 2024 KWMS. All rights reserved.</p>
     </footer>
-
     <script>
         function filterTable() {
             const input = document.getElementById("searchInput");
             const filter = input.value.toLowerCase();
             const table = document.getElementById("customerTable");
             const rows = table.getElementsByTagName("tr");
-
             for (let i = 1; i < rows.length; i++) {
                 const cells = rows[i].getElementsByTagName("td");
                 let isMatch = false;
-
                 for (let j = 0; j < cells.length; j++) {
                     if (cells[j].textContent.toLowerCase().includes(filter)) {
                         isMatch = true;
                         break;
                     }
                 }
-
                 rows[i].style.display = isMatch ? "" : "none";
             }
         }
-
         window.onscroll = function() {
             const footer = document.getElementById("footer");
             const scrollPosition = window.scrollY + window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight;
-
             if (scrollPosition >= documentHeight) {
                 footer.style.display = "block";
             } else {
